@@ -1,15 +1,105 @@
+body {
+  width: 411px;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.carousel__container {
+  width: 300px;
+  height: 100px;
+  margin: auto;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.carousel__slides-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+
+.carousel__prev,
+.carousel__next {
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: rgba(255,255,255,.5);
+  cursor: pointer;
+}
+
+.carousel__content-container {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+}
+.carousel__prev {
+  left: -50px;
+}
+
+.carousel__next {
+  right: -50px;
+}
+
+.carousel__slides-container.anim {
+  animation: slidein .3s ease-out forwards;
+}
+
+.carousel__slides-container.anim-prev {
+  animation: slideout .3s ease-out forwards;
+}
+
+@keyframes slidein {
+ 
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(-116px);
+  }
+
+}
+
+@keyframes slideout {
+ 
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(116px);
+  }
+
+}
+
+.carousel__slide {
+  width: 100px;
+  flex-shrink: 0;
+  height: 100px;
+  border-radius: 16px;
+}
+
+.carousel__slide--appereance {
+  opacity: 0;
+  animation: visible .5s ease-out forwards;
+}
+
+
+@keyframes visible {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -22,17 +112,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
